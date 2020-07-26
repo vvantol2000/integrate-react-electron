@@ -9,7 +9,15 @@ function createWindow() {
     });
 
     //win.loadURL('index.html');
-    win.loadURL(`file://${__dirname}/build/index.html`);
+    
+    //win.loadURL(`file://${__dirname}/build/index.html`);
+
+    // Live Reloading 
+    if (process.env.DEBUG) {
+        win.loadURL(`http://localhost:3000`);
+    } else {
+        win.loadURL(`file://${__dirname}/build/index.html`);
+    }
 
     win.on('closed', () => {
         win = null;
